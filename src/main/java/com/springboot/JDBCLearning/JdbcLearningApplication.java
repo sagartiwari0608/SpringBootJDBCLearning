@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.List;
+
 @SpringBootApplication
 public class JdbcLearningApplication {
 
@@ -14,12 +16,15 @@ public class JdbcLearningApplication {
 
 		ApplicationContext context= SpringApplication.run(JdbcLearningApplication.class, args);
 		Student student = context.getBean(Student.class);
-		student.setAge(16);
-		student.setRollNo(1);
-		student.setName("Sagar");
+		student.setAge(26);
+		student.setRollNo(4);
+		student.setName("Bharathi");
 
 		StudentService studentService = context.getBean(StudentService.class);
 		studentService.addStudent(student);
+
+		List<Student> students = studentService.getStudents();
+		System.out.println(students);
 	}
 
 }
